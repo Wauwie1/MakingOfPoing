@@ -1,14 +1,19 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/5.8.4/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/5.8.4/firebase-auth.js"></script>
+  <script defer src="/__/firebase/5.8.4/firebase-database.js"></script>
+  <script defer src="/__/firebase/5.8.4/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/5.8.4/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
 
-
-  <!-- Scrollbar Custom CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
@@ -21,6 +26,7 @@
 </head>
 
 <body>
+
   <!-- Navbar + header -->
   <div class="logoheader">
     <div class="d-flex justify-content-center">
@@ -44,9 +50,9 @@
             Making of
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Concept</a>
-            <a class="dropdown-item" href="#">What makes a game fun?</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">1. Concept</a>
+            <a class="dropdown-item" href="#">2. What makes a game fun?</a>
+            <a class="dropdown-item" href="#">3. Something else here</a>
           </div>
         </li>
       </ul>
@@ -55,18 +61,47 @@
 
   <br />
   <br />
+  <!-- Content -->
   <div class="d-flex justify-content-center">
     <div class="card card-main">
       <div class="card-body">
-          <h5 class="card-title">Welcome!</h5>
-          <p class="card-text">Welcome to the making of Poing. Poing is a mobile game created by Paul Evers and Robin de Witte for Fontys Game Design and Technology.
-            On this website I will describe the development process of the game, which 
-          </p>
+        <h5 class="card-title">Welcome!</h5>
+        <p class="card-text">Welcome to the making of Poing. Poing is a mobile game created by Paul Evers and Robin de
+          Witte for Fontys Game Design and Technology.
+          On this website I will describe the development process of the game and which techniques we used in making our decisions.
+          Use the navigation bar on top of the website to navigate through the different processes;
+        </p>
+        <p> I hope you enjoy your time on this website and if you are interested you can download the game for Android below.</p>
+        <p style="text-align: end">Paul Evers</p>
+        <img style="height: 5em;" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png">
       </div>
     </div>
   </div>
 
+  <!-- Firebase Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] ===
+          'function');
+        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -78,6 +113,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
   <!-- Custom JS -->
   <script src="js/script.js"></script>
+
 </body>
 
 </html>
